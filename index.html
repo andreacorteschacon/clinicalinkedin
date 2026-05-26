@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Profesional | Gerencia de Proyectos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            /* Azul ejecutivo */
+            --secondary-color: #2b6cb0;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Google Sans', Arial, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        /* Contenedor Global */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Encabezado / Perfil */
+        header {
+            background-color: var(--white);
+            padding: 60px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header h2 {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+        }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Secciones Principales */
+        section {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        section h3 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        /* Cuadrícula de Proyectos / Logros */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--bg-light);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+            transition: transform 0.2s;
+
+            /* Nuevas propiedades para alinear el contenido internamente */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /* Empuja las imágenes al fondo */
+            height: 100%;
+            /* Asegura que todas tengan la misma altura */
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+        }
+
+        .card-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 15px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .card-images a {
+            display: inline-block;
+            transition: opacity 0.2s;
+        }
+
+        .card-images a:hover {
+            opacity: 0.8;
+        }
+
+        .card-images img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .card h4 {
+            color: var(--primary-color);
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .card .metric {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        /* Lista de Herramientas */
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+        }
+
+        .skill-item::before {
+            content: "•";
+            color: var(--secondary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* Footer / Contacto */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+
+            header,
+            section {
+                padding: 25px 20px;
+            }
+        }
+
+        /* Estilos para la Imagen Cuadrada */
+        .profile-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            /* Asegura que la imagen no se deforme */
+            border-radius: 12px;
+            /* Bordes ligeramente suavizados para diseño moderno */
+            border: 3px solid var(--bg-light);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ENCABEZADO -->
+        <header>
+            <h1>Profesional Ejecutiva en XXX2</h1>
+            <h2>Gerencia de Proyectos</h2>
+            <p class="tagline">
+                Más de de una década liderando la gestión comercial de cuentas de alta complejidad, optimización de xxx
+                y ejecución regional de proyectos de gran impacto tecnológico.
+            </p>
+            <div class="badges">
+                <span class="badge">Idiomas</span>
+                <span class="badge">MBA - Universidad</span>
+                <span class="badge">Cargo profesional</span>
+                <span class="badge">Ingeniería....</span>
+
+            </div>
+        </header>
+
+        <!-- LOGROS DESTACADOS -->
+        <section>
+            <h3>Casos de Éxito & Hitos de Gestión</h3>
+            <div class="grid">
+
+                <div class="card">
+                    <h4>Crecimiento Sostenido de Negocio</h4>
+                    <p>Dirección comercial y control financiero de cuentas de alta complejidad, logrando rentabilizar la
+                        operación de manera constante.</p>
+                    <span class="metric">Crecimiento de XXXX por XX años consecutivos</span>
+                    <div class="card-images">
+                        <a href="https://www.andreacortes.com.co/blog/" target="_blank">
+                            <img src="images/clinica-linkedin.png" alt="Clínica LinkedIn">
+                        </a>
+                        <a href="https://www.andreacortes.com.co/blog/" target="_blank">
+                            <img src="images/clinica-linkedin.png" alt="Clínica LinkedIn">
+                        </a>
+                        <a href="https://www.andreacortes.com.co/blog/" target="_blank">
+                            <img src="images/clinica-linkedin.png" alt="Clínica LinkedIn">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4>Dirección de Grandes Eventos</h4>
+                    <p>Planificación, control presupuestal y coordinación operativa de xxxxx, gestionando la agenda e
+                        invitados internacionales.</p>
+                    <span class="metric">+xx,x00 Asistentes</span>
+                    <div class="card-images">
+                        <a href="https://www.andreacortes.com.co/blog/" target="_blank">
+                            <img src="images/clinica-linkedin.png" alt="Clínica LinkedIn">
+                        </a>
+                        <a href="https://www.andreacortes.com.co/blog/" target="_blank">
+                            <img src="images/clinica-linkedin.png" alt="Clínica LinkedIn">
+                        </a>
+                        <a href="https://www.andreacortes.com.co/blog/" target="_blank">
+                            <img src="images/clinica-linkedin.png" alt="Clínica LinkedIn">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4>Gestión Cultural y Entretenimiento Digital</h4>
+                    <p>Coordinación general de la operación logística y equipo para el xxxx.</p>
+                    <span class="metric">+x00 Asistentes</span>
+                    <div class="card-images">
+                        <a href="https://www.andreacortes.com.co/blog/" target="_blank">
+                            <img src="images/clinica-linkedin.png" alt="Clínica LinkedIn">
+                        </a>
+                        <a href="https://www.andreacortes.com.co/blog/" target="_blank">
+                            <img src="images/clinica-linkedin.png" alt="Clínica LinkedIn">
+                        </a>
+                        <a href="https://www.andreacortes.com.co/blog/" target="_blank">
+                            <img src="images/clinica-linkedin.png" alt="Clínica LinkedIn">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- APTITUDES Y PLATAFORMAS -->
+        <section>
+            <h3>Business Intelligence</h3>
+            <div class="skills-list">
+                <div class="skill-item">Gestión...</div>
+                <div class="skill-item">Estrategia...</div>
+                <div class="skill-item">XXX CRM</div>
+                <div class="skill-item">Prospección Inteligente</div>
+                <div class="skill-item">Power BI & Análisis de Datos</div>
+                <div class="skill-item">Optimización en Excel Avanzado</div>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <footer>
+            <p>¿Qué intención tienes en LinkedIn? <a href="https://www.linkedin.com/services/page/8a868430a07673b277/" target="_blank">Ingresa AQUÍ</a>
+            </p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
